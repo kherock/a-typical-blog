@@ -1,0 +1,37 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+}
+
+article {
+  max-width: $site-width;
+  margin: auto;
+  padding: 0 16px;
+}
+
+.comments-section {
+  flex: 1;
+  padding: 32px 0;
+  background-color: mat-color(map-get($app-theme, background), app-bar);
+
+  :host.dark-theme & {
+    background-color: mat-color(map-get($app-dark-theme, background), app-bar);
+  }
+}
+
+.comment-count {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5em;
+  padding: 0 16px;
+}
+
+.comment-count,
+form,
+article-comments {
+  max-width: $site-width;
+  margin: auto;
+}
+

@@ -1,0 +1,100 @@
+@import '~normalize.css';
+@import '~simplebar/dist/simplebar.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+@import '~@angular/material/theming';
+@import 'variables';
+
+@include mat-core();
+@include angular-material-theme($app-theme);
+
+.dark-theme {
+  @include angular-material-theme($app-dark-theme);  
+
+  .ql-blank::before {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+a {
+  color: mat-color($app-primary);
+
+  &:visited:not(:active) {
+    color: map-get($mat-purple, 500);
+
+    .dark-theme & {
+      color: map-get($mat-purple, 300);      
+    }
+  }
+
+  &:active {
+    color: mat-color($app-accent);
+  }
+}
+
+quill-editor.mat-input-element {
+  .ql-container {
+    font: inherit;
+  }
+
+  .ql-editor {
+    padding: 0;
+    overflow: visible;
+
+    &.ql-blank::before {
+      left: auto;
+      right: auto;
+      font-style: normal;
+      // Delay the transition until the label has animated about a third of the way through, in
+      // order to prevent the placeholder from overlapping for a split second.
+      transition: color $swift-ease-out-duration $swift-ease-out-duration / 3 $swift-ease-out-timing-function;
+
+      .mat-form-field-hide-placeholder & {
+        color: transparent;
+        transition: none;
+      }
+    }
+  
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ql-tooltip {
+    z-index: 1;
+  }
+}
+
+// fix outlined form fields
+// https://github.com/angular/material2/issues/10710
+.mat-form-field-appearance-outline {
+  &.mat-form-field-can-float.mat-form-field-should-float {
+    .mat-form-field-outline-gap {
+      border-top-color: transparent;
+    }
+  }
+
+  .mat-form-field-outline-gap {
+    border: 1px solid currentColor;
+    border-left-style: none;
+    border-right-style: none;
+    border-radius: 1e-6px;
+
+    &::before {
+      content: none !important;
+    }
+  }
+}

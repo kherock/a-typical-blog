@@ -1,0 +1,59 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: mat-color(map-get($app-theme, background), background);
+
+  &.dark-theme {
+    background-color: mat-color(map-get($app-dark-theme, background), background);    
+    color: mat-color(map-get($app-dark-theme, foreground), text);    
+  }
+}
+
+router-outlet::ng-deep + * {
+  flex: 1;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  // workaround for a Chrome bug with position: sticky
+  // pointer events will be missed while the container is scrolled
+  transform: perspective(100px);
+}
+
+.mat-toolbar-row {
+  max-width: $site-width;
+  margin: auto;
+}
+
+.home-link {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+.dark-theme-toggle {
+  .mat-slide-toggle {
+    display: none;
+  }
+
+  :host.dark-theme & .mat-icon-button {
+    opacity: 0.6;
+  }
+
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    right: 32px;
+
+    .mat-slide-toggle {
+      display: initial;
+    }
+
+    .mat-icon-button {
+      display: none;
+    }
+  }
+}

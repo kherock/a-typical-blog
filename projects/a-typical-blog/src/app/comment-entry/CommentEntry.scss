@@ -1,0 +1,34 @@
+@import 'variables';
+
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+.form-footer {
+  overflow: hidden;
+  margin-top: 16px;
+  transition:
+      margin $swift-ease-out-duration $swift-ease-out-timing-function,
+      opacity $swift-ease-out-duration / 3 $swift-ease-out-timing-function;
+
+  &:not(.visible) {
+    pointer-events: none;
+    margin-top: -36px;
+    opacity: 0;
+    z-index: -1;
+  }
+  &.visible {
+    transition:
+        margin $swift-ease-out-duration $swift-ease-out-timing-function,
+        opacity $swift-ease-in-duration $swift-ease-in-timing-function;
+  }
+
+  button {
+    margin-right: 8px;
+  }
+}

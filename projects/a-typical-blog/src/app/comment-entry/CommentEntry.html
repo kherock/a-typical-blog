@@ -1,0 +1,21 @@
+<mat-form-field appearance="outline">
+  <mat-label>Leave a comment</mat-label>
+  <quill-editor matInput #matInput="matInput"
+    placeholder="Be nice!"
+    [formControl]="formGroup.control.get('delta')"
+    [formats]="quillFormats"
+    [modules]="quillModules"
+    theme="bubble">
+  </quill-editor>
+  <div class="form-footer"
+    [class.visible]="matInput.shouldLabelFloat">
+    <button mat-flat-button
+      [disabled]="!formGroup.control.valid">
+      Submit
+    </button>
+    <button mat-stroked-button
+      type="reset">
+      Cancel
+    </button>
+  </div>
+</mat-form-field>

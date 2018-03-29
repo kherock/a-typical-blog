@@ -1,0 +1,18 @@
+<header>
+  <h1>{{article.headline}}</h1>
+  <h3 *ngIf="article.subhead">{{article.subhead}}</h3>
+  <mat-divider></mat-divider>
+  <mat-list>
+    <mat-list-item>
+      <p matLine>{{article.author}}</p>
+      <p matLine>{{article.date | date}}</p>
+    </mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+</header>
+<section class="article-body"
+  [innerHtml]="article.body">
+</section>
+<footer>
+
+</footer>

@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+$app-primary: mat-palette($mat-light-blue);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$app-theme: mat-light-theme($app-primary, $app-accent);
+$app-dark-theme: mat-dark-theme($app-primary, $app-accent);
+
+$site-width: 740px;

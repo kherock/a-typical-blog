@@ -1,0 +1,8 @@
+@import 'variables';
+
+:host {
+  display: block;
+  max-width: $site-width;
+  margin: auto;
+  text-align: center;
+}

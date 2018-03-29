@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+header {
+  padding-top: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+
+.mat-list-item {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+.article-body::ng-deep {
+  padding-top: 1em;
+
+  figure {
+    margin: 1em 0;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+
+.article-body {
+  font-size: 18px;
+  line-height: 1.5;
+}

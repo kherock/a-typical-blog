@@ -1,0 +1,31 @@
+<article
+  *ngIf="articleRequest$ | async as body"
+  [article-content]="body.article">
+</article>
+<div class="comments-section">
+  <div
+    *ngIf="articleRequest$ | async as body"
+    class="comment-count">
+    <ng-container [ngPlural]="body.comments">
+      <ng-template ngPluralCase="=0">
+        There aren't any comments yet.
+      </ng-template>
+      <ng-template ngPluralCase="=1">
+        There is 1 comment.
+      </ng-template>
+      <ng-template ngPluralCase="other">
+        There are {{body.comments}} comments.
+      </ng-template>
+    </ng-container>
+  </div>
+  <form comment-entry
+    [formGroup]="commentForm"
+    (ngSubmit)="submitComment($event)"
+    (reset)="commentSubmission.unsubscribe()">
+  </form>
+  <mat-divider></mat-divider>
+  <article-comments
+    *ngIf="commentsRequest$ | async as comments"
+    [comments]="comments">
+  </article-comments>
+</div>

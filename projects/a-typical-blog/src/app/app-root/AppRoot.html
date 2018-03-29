@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <a routerLink="/"
+      class="home-link">
+      A Typical Blog
+    </a>
+    <span style="flex: 1"></span>
+    <div class="dark-theme-toggle">
+      <button mat-icon-button
+        title="Toggle dark theme"
+        (click)="isDarkTheme = !isDarkTheme">
+        <mat-icon>lightbulb_outline</mat-icon>
+      </button>
+      <mat-slide-toggle
+        [checked]="isDarkTheme"
+        (change)="isDarkTheme = $event.checked">
+        Dark theme
+      </mat-slide-toggle>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

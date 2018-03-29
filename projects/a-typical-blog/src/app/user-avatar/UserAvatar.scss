@@ -1,0 +1,55 @@
+@import 'variables';
+
+$shade: 500;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2em;
+
+  &[data-color="0"] {
+    background-color: mat-color($mat-red, $shade);
+  }
+
+  &[data-color="1"] {
+    background-color: mat-color($mat-pink, $shade);
+  }
+
+  &[data-color="2"] {
+    background-color: mat-color($mat-purple, $shade);
+  }
+
+  &[data-color="3"] {
+    background-color: mat-color($mat-deep-purple, $shade);
+  }
+
+  &[data-color="4"] {
+    background-color: mat-color($mat-indigo, $shade);
+  }
+
+  &[data-color="5"] {
+    background-color: mat-color($mat-blue, $shade);
+  }
+
+  &[data-color="6"] {
+    background-color: mat-color($mat-light-blue, $shade);
+  }
+
+  &[data-color="7"] {
+    background-color: mat-color($mat-cyan, $shade);
+  }
+
+  &[data-color="8"] {
+    background-color: mat-color($mat-teal, $shade);
+  }
+
+  &[data-color="9"] {
+    background-color: mat-color($mat-green, $shade);
+  }
+
+  &[data-color="10"] {
+    background-color: mat-color($mat-light-green, $shade);
+  }
+}
