@@ -47,7 +47,7 @@ export class QuillMatInput extends mixinErrorState(MatInputBase) implements MatF
     if (value) {
       this.quillEditorRef.quillEditor.focus();
     } else {
-      this.quillEditorRef.quillEditor.blur();      
+      this.quillEditorRef.quillEditor.blur();
     }
   }
 
@@ -123,4 +123,3 @@ export class QuillMatInput extends mixinErrorState(MatInputBase) implements MatF
     if (!this.focused) this.focused = true;
   }
 }
-

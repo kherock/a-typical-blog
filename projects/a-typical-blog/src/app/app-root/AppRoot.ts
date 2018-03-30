@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { AuthenticationService } from '../core/AuthenticationService';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./AppRoot.scss'],
   host: {
     '[class.dark-theme]': 'isDarkTheme'
-  }
+  },
 })
-export class AppRoot {
+export class AppRoot implements OnInit {
   title = 'some blog';
 
   isDarkTheme = false;
+
+  constructor(public authenticationService: AuthenticationService) { }
+
+  ngOnInit() {
+    this.authenticationService.restoreSession().subscribe();
+  }
 }

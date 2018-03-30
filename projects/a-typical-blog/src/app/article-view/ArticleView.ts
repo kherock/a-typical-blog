@@ -1,8 +1,8 @@
-import { Component, SkipSelf } from '@angular/core';
+import { Component, OnDestroy, SkipSelf } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { catchError, map, share, switchMap } from 'rxjs/operators';
+import { catchError, map, share, shareReplay, switchMap, tap } from 'rxjs/operators';
 
 import { ArticleService } from '../core/ArticleService';
 import { AppRoot } from '../app-root';
@@ -15,14 +15,16 @@ import { AppRoot } from '../app-root';
     '[class.dark-theme]': 'appRoot.isDarkTheme'
   },
 })
-export class ArticleView {
+export class ArticleView implements OnDestroy {
 
   commentForm = new FormGroup({
     delta: new FormControl(null, Validators.required)
   });
 
   articlePath$ = this.route.params.pipe(
-    map(params => `/${params.year}/${params.month}/${params.articleName}`)
+    map(params => `/${params.year}/${params.month}/${params.articleName}`),
+    tap(() => this.showComments = false),
+    shareReplay(1),
   );
 
   articleRequest$ = this.articlePath$.pipe(
@@ -38,6 +40,7 @@ export class ArticleView {
     share(),
   );
 
+  showComments = false;
   commentSubmission = new Subscription();
 
   constructor(
@@ -61,6 +64,7 @@ export class ArticleView {
     this.commentSubmission = this.articleService.postComment(path, delta)
       .subscribe(
         (response) => {
+          this.commentForm.reset();
         },
         (err) => {
           console.error(err);

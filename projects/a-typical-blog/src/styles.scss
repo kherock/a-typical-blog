@@ -29,7 +29,14 @@ html {
   overflow-y: scroll;
 }
 
+.mat-typography {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+  }
+}
+
 a {
+  cursor: pointer;
   color: mat-color($app-primary);
 
   &:visited:not(:active) {
@@ -95,6 +102,25 @@ quill-editor.mat-input-element {
 
     &::before {
       content: none !important;
+    }
+  }
+}
+
+body .mat-list {
+  .mat-list-item {
+    &.auto-height {
+      height: auto;
+
+      .mat-list-item-content {
+        align-items: flex-start;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .mat-line {
+        white-space: normal;
+        word-wrap: break-word;
+      }
     }
   }
 }

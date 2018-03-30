@@ -9,13 +9,27 @@
   </quill-editor>
   <div class="form-footer"
     [class.visible]="matInput.shouldLabelFloat">
-    <button mat-flat-button
-      [disabled]="!formGroup.control.valid">
-      Submit
-    </button>
-    <button mat-stroked-button
-      type="reset">
-      Cancel
-    </button>
+    <ng-container *ngIf="authenticationService.user$ | async as user; else noAuth">
+      <button mat-flat-button
+        [disabled]="!formGroup.control.valid">
+        Submit
+      </button>
+      <button mat-stroked-button
+        type="reset">
+        Cancel
+      </button>
+      <mat-hint>
+        Logged in as {{user.username}}
+      </mat-hint>
+    </ng-container>
+    <ng-template #noAuth>
+      <button mat-flat-button
+        (click)="authenticationService.showAuthDialog()">
+        Log in
+      </button>
+      <mat-hint>
+        You must be logged in to comment.
+      </mat-hint>
+    </ng-template>
   </div>
 </mat-form-field>

@@ -24,8 +24,17 @@
     (reset)="commentSubmission.unsubscribe()">
   </form>
   <mat-divider></mat-divider>
-  <article-comments
-    *ngIf="commentsRequest$ | async as comments"
-    [comments]="comments">
-  </article-comments>
+  <ng-container *ngIf="showComments; else showCommentsBtn">
+    <article-comments
+      *ngIf="commentsRequest$ | async as comments"
+      [comments]="comments">
+    </article-comments>
+  </ng-container>
+  <ng-template #showCommentsBtn>
+    <button mat-flat-button
+      class="load-comment-button"
+      (click)="showComments = true">
+      Show comments
+    </button>
+  </ng-template>
 </div>

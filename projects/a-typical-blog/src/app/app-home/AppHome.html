@@ -1,12 +1,70 @@
-Welcome to the blog!
-There isn't much going on here.
+<h1>
+  Welcome to the blog!  
+</h1>
+<h3>
+  Here's a few articles.
+</h3>
+<p>
+  <a routerLink="/2015/08/colombia-mass-surveillance/">
+    Colombia Mass Surveillance
+  </a>
+  <br>
+  <a routerLink="/2016/04/andres-sepulveda-mexico-election-hack">
+    Hacker claims he helped swing Mexican election
+  </a>
+  <br>
+  <a routerLink="/2018/04/why-chinas-artificial-intelligence-threat-is-real-but-maybe-not-as-bad-as-you-think">
+    Why China’s artificial intelligence threat is real, but maybe not as bad as you think
+  </a>
+</p>
 
-<br>
+<h3>New Concepts</h3>
+<ul>
+  <li>Angular Universal and SSR</li>
+  <li>RxJS 6</li>
+</ul>
 
-<a routerLink="/2015/08/colombia-mass-surveillance/">
-  Colombia Mass Surveillance
-</a>
-<br>
-<a routerLink="/2016/04/andres-sepulveda-mexico-election-hack">
-  Hacker claims he helped swing Mexican election
-</a>
+<h3>Primary Goals</h3>
+<ol>
+  <li>Create a blog site that is compatible with Angular SSR</li>
+  <li>Keep components lightweight and as declarative as possible</li>
+  <li>Strict validation on the server side</li>
+</ol>
+
+<h3>The Stack</h3>
+<h4>Frontend</h4>
+<ul>
+  <li>Angular 6</li>
+  <li>Angular Material</li>
+  <li>RxJS 6</li>
+  <li>
+    Other libraries
+    <ul>
+      <li>Quill</li>
+    </ul>
+  </li>
+</ul>
+<h4>Backend</h4>
+<ul>
+  <li>Node.js 8</li>
+  <li>Koa 2</li>
+  <li>Angular 6 (server platform)</li>
+  <li>SocketCluster</li>
+  <li>Passport.js</li>
+  <li>MongoDB</li>
+</ul>
+
+<h3>Problems encountered along the way</h3>
+<ul>
+  <li>Angular 6 is still in RC phase, so I did have to trace several bugs and work around them</li>
+  <li>Chrome bug with <code>position: sticky</code>!</li>
+  <li>More Chrome bugs related to how <code>border-radius</code> impacts the visible width of borders on windows with non-integer pixel ratios</li>
+  <li>Quill attempts to manipulate the <code>document</code> upon module load causing problems for SSR</li>
+</ul>
+
+<h3>Features that were planned but didn't make it because I got tired of focusing on the frontend</h3>
+<ul>
+  <li>Unit testing for Angular components</li>
+  <li>UI for creating replies as children of comments (YouTube-style)</li>
+  <li>Comment voting</li>
+</ul>

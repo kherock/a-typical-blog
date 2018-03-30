@@ -9,9 +9,11 @@ import { QuillModule } from './QuillUniversalModule';
 import { MaterialModule } from './MaterialModule';
 
 import { ArticleService } from './core/ArticleService';
-import { Authentication } from './core/Authentication';
+import { AuthenticationService } from './core/AuthenticationService';
 
 import { QuillMatInput } from './QuillMatInput';
+
+import { AppAuthDialog } from './dialogs/app-auth';
 
 import { AppHome } from './app-home';
 import { AppRoot } from './app-root';
@@ -24,6 +26,7 @@ import { UserAvatar } from './user-avatar';
 
 @NgModule({
   declarations: [
+    AppAuthDialog,
     AppHome,
     AppRoot,
     ArticleContent,
@@ -48,11 +51,14 @@ import { UserAvatar } from './user-avatar';
     QuillModule,
   ],
   exports: [
-    AppRoot
+    AppRoot,
+  ],
+  entryComponents: [
+    AppAuthDialog,
   ],
   providers: [
     ArticleService,
-    Authentication,
+    AuthenticationService,
   ],
 })
 export class AppModule { }

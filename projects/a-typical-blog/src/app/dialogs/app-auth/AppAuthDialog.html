@@ -1,0 +1,38 @@
+<form [formGroup]="authForm"
+  (ngSubmit)="submitForm($event)">
+  <h3 mat-dialog-title>
+    {{doSignUp ? 'Create an account' : 'Welcome Back!'}}
+  </h3>
+  <div class="error-text">{{errorText}}</div>
+  <mat-dialog-content>
+    <mat-form-field appearance="outline"
+      *ngIf="doSignUp">
+      <mat-label>Full name</mat-label>
+      <input matInput
+        formControlName="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput
+        formControlName="username"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password"
+        formControlName="password"
+      />
+    </mat-form-field>
+    <div class="switch-view">
+      <span *ngIf="!doSignUp">No account yet? </span>
+      <a (click)="doSignUp = !doSignUp">Sign {{doSignUp ? 'in instead' : 'up'}}</a>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-flat-button
+      [disabled]="!authForm.valid">
+      Sign {{doSignUp ? 'up' : 'in'}}
+    </button>
+  </mat-dialog-actions>
+</form>

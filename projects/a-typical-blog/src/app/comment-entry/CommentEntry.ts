@@ -1,6 +1,8 @@
 import { Component, Self, Optional, ViewChild } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 
+import { AuthenticationService } from '../core/AuthenticationService';
+
 @Component({
   selector: 'form[comment-entry]',
   templateUrl: './CommentEntry.html',
@@ -35,7 +37,10 @@ export class CommentEntry {
 
   @ViewChild('matInput') matInput;
 
-  constructor(@Optional() @Self() public formGroup: FormGroupDirective) { }
+  constructor(
+    @Optional() @Self() public formGroup: FormGroupDirective,
+    public authenticationService: AuthenticationService,
+  ) { }
 
   onReset() {
     this.matInput.value = null;

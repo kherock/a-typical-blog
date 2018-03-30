@@ -36,24 +36,21 @@ router-outlet::ng-deep + * {
 }
 
 .dark-theme-toggle {
-  .mat-slide-toggle {
-    display: none;
+  .mat-icon-button {
+    margin: 0 8px;
+
+    :host.dark-theme {
+      opacity: 0.6;
+    }
   }
 
-  :host.dark-theme & .mat-icon-button {
-    opacity: 0.6;
-  }
-
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 960px) {
     position: absolute;
-    right: 32px;
-
-    .mat-slide-toggle {
-      display: initial;
-    }
-
-    .mat-icon-button {
-      display: none;
-    }
+    right: 0;
   }
+}
+
+.greeting-text {
+  font-weight: normal;
+  font-size: 16px;
 }
